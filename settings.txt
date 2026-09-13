@@ -1,0 +1,36 @@
+# ============================================================
+#  OptikLink VLESS Settings
+# ============================================================
+
+# -------------------- SERVER --------------------
+# IP   — public IP from OptikLink panel
+# PORT — single port assigned to the server
+IP =
+PORT =
+
+# -------------- PROTOCOL & ENCRYPTION -----------
+# PROTOCOL : ws | xhttp
+#            ws    — best compatibility (v2rayNG, Exclave, etc.)
+#            xhttp — newer transport, some clients need manual TLS tweaks
+# TLS      : true | false
+#            true  — self-signed certificate (recommended)
+#            false — plain, no encryption
+PROTOCOL =
+TLS =
+
+# -------------------- OPTIONAL ------------------
+# Leave empty → bot fills defaults automatically
+#
+# UUID           — empty = generate new on each clear
+# PATH           — empty = /vless (ws) or /xhttp (xhttp)
+# SNI            — empty = optiklink.local
+# NAME           — empty = Optiklink (label in client)
+# ALLOW_INSECURE — true | false
+#                  true  = skip cert check (recommended for self-signed)
+#                  false = strict (needs client pcs= support)
+#                  empty = false
+UUID =
+PATH =
+SNI =
+NAME =
+ALLOW_INSECURE =
