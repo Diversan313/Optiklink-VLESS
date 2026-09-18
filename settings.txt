@@ -1,5 +1,5 @@
 # ============================================================
-#  OptikLink VLESS Settings
+#  OptikLink Proxy Settings
 # ============================================================
 
 # -------------------- SERVER --------------------
@@ -8,7 +8,14 @@
 IP =
 PORT =
 
-# -------------- PROTOCOL & ENCRYPTION -----------
+# -------------------- MODE ----------------------
+# MODE: vless | mtproto
+#       vless   — VLESS via Xray-core
+#       mtproto — Telegram MTProto proxy via mtg
+# Empty = vless
+MODE =
+
+# -------------- VLESS / XRAY --------------------
 # PROTOCOL : ws | xhttp
 #            ws    — best compatibility (v2rayNG, Exclave, etc.)
 #            xhttp — newer transport, some clients need manual TLS tweaks
@@ -18,24 +25,40 @@ PORT =
 PROTOCOL =
 TLS =
 
-# -------------------- OPTIONAL ------------------
 # Leave empty → bot fills defaults automatically
-#
 # UUID           — empty = generate new on each clear
 # PATH           — empty = /vless (ws) or /xhttp (xhttp)
 # SNI            — empty = optiklink.local
-# NAME           — empty = Optiklink (label in client)
 # ALLOW_INSECURE — true | false
 #                  true  = skip cert check (recommended for self-signed)
 #                  false = strict (needs client pcs= support)
 #                  empty = false
-# LOG_FILE       — true | false
-#                  true  = write bot.log (auto-rotates ~1 MB)
-#                  false = console only, no bot.log (recommended)
-#                  empty = false
 UUID =
 PATH =
 SNI =
-NAME =
 ALLOW_INSECURE =
+
+# -------------------- MTPROTO -------------------
+# Used only when MODE = mtproto
+# MT_SECRET    — empty = generate a new Fake-TLS secret
+#                stored as Telegram hex; accepts Telegram hex or mtg base64 input
+# MT_DOMAIN    — empty = www.google.com (Fake-TLS camouflage host)
+#                if you change it later, clear MT_SECRET to regenerate
+# MT_PREFER_IP — prefer-ipv4 | prefer-ipv6 | only-ipv4 | only-ipv6
+#                empty = prefer-ipv4
+# MT_TIME_SKEW — allowed client/server clock drift for Fake-TLS timestamps
+#                empty = 30s (increase to 60s if you see "timestamp is too old")
+MT_SECRET =
+MT_DOMAIN =
+MT_PREFER_IP =
+MT_TIME_SKEW =
+
+# -------------------- OPTIONAL ------------------
+# NAME           — empty = Optiklink (label in VLESS client/config)
+# LOG_FILE       — true | false
+#                  true  = write bot.log (auto-rotates ~1 MB);
+#                          in MTProto mode also logs connections/errors from mtg
+#                  false = console only, no bot.log (recommended)
+#                  empty = false
+NAME =
 LOG_FILE =
